@@ -33,8 +33,29 @@ public class LeetCode0035 {
 
     public static void main(String[] args) {
         int[] nums = {1, 3, 5, 6};
-        int i = searchInsert(nums, 0);
+        int i = solution2(nums, 5);
         System.out.println(i);
+    }
+
+    //二分法--需要根据题意去判断是需要返回left还是返回right
+    public static int solution2(int[] nums, int target) {
+        if (nums == null || nums.length == 0)
+            return 0;
+        if (nums[nums.length - 1] < target)
+            return nums.length;
+
+        int left = 0;
+        int right = nums.length - 1;
+
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] < target) {
+                left = mid + 1;
+            }else{
+                right = mid;
+            }
+        }
+        return left;
     }
 
     public static int searchInsert(int[] nums, int target) {
@@ -53,28 +74,4 @@ public class LeetCode0035 {
         return nums.length;
     }
 
-
-    //二分法--需要根据题意去判断是需要返回left还是返回right
-    public static int solution2(int[] nums, int target) {
-        if (nums == null || nums.length == 0)
-            return 0;
-        if (nums[nums.length - 1] < target)
-            return nums.length;
-
-        int len = nums.length - 1;
-        int left = 0;
-        int right = len - 1;
-
-        while (left <= right) {
-            int mid = (left + right) / 2;
-            if (nums[mid] == target)
-                return mid;
-            else if (nums[mid] < target) {
-                left = mid + 1;
-            } else {
-                right = mid - 1;
-            }
-        }
-        return left;
-    }
 }
