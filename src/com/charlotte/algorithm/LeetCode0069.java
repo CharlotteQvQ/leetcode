@@ -27,7 +27,7 @@ package com.charlotte.algorithm;
  */
 public class LeetCode0069 {
     public static void main(String[] args) {
-        int result = mySqrt(9);
+        int result = mySqrt(0);
         System.out.println(result);
     }
 
